@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using Application.Interfaces;
 
 namespace Domain.Entities
 {
@@ -26,7 +27,7 @@ namespace Domain.Entities
 
     [Phone]
     [MaxLength(15)]
-    public  string Telefone { get; set; } // Opcional, formato (XX) XXXXX-XXXX
+    public  string? Telefone { get; set; } // Opcional, formato (XX) XXXXX-XXXX
 
     [Required]
     public  bool Ativo { get; set; } // Obrigatório, default true
