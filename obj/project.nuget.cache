@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "5o2/eJl+nJo=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Usuario\\PROJECTS\\backend\\APIUsuarios\\APIUsuarios.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Usuario\\.nuget\\packages\\fluentvalidation\\12.1.0\\fluentvalidation.12.1.0.nupkg.sha512",
+    "C:\\Users\\Usuario\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.8\\microsoft.aspnetcore.openapi.9.0.8.nupkg.sha512",
+    "C:\\Users\\Usuario\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": []
+}
