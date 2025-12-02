@@ -37,7 +37,7 @@ public class UsuarioService : IUsuarioService
         var usuario = await _repo.GetByIdAsync(id, ct);
         if (usuario == null)
         {
-            throw new ArgumentException("Usuário não encontrado");
+            throw new KeyNotFoundException("Usuário não encontrado");
         }
         var usuarioDTO = MappingExtensions.ToReadDto(usuario);
         return usuarioDTO;
@@ -49,7 +49,7 @@ public class UsuarioService : IUsuarioService
 
         if (emailExiste)
         {
-            throw new ArgumentException("O email informado já está cadastrado.");
+            throw new InvalidOperationException("O email informado já está cadastrado.");
         }
 
         var usuario = UsuarioFactory.Criar(
@@ -71,7 +71,7 @@ public class UsuarioService : IUsuarioService
         var usuario = await _repo.GetByIdAsync(id, ct);
         if (usuario == null)
         {
-            throw new ArgumentException("O usuário informado não existe.");
+            throw new KeyNotFoundException("O usuário informado não existe.");
         }
         usuario.Nome = dto.Nome;
         usuario.Email = dto.Email;
@@ -90,7 +90,7 @@ public class UsuarioService : IUsuarioService
         var usuario = await _repo.GetByIdAsync(id, ct);
         if (usuario == null)
         {
-            throw new ArgumentException("O usuário informado não existe.");
+            throw new KeyNotFoundException("O usuário informado não existe.");
         }
         usuario.Ativo = false;
         usuario.DataAtualizacao = DateTime.UtcNow;
@@ -104,22 +104,5 @@ public class UsuarioService : IUsuarioService
     public async Task<bool> EmailJaCadastradoAsync(string email, CancellationToken ct = default)
     {
         return await _repo.EmailExistsAsync(email.ToLower(), ct);
-    }
-
-    public async Task<object?> CriarAsync(string nome, string email, string senha, DateTime dataNascimento, string telefone, CancellationToken ct = default)
-    {
-        var emailExiste = await _repo.EmailExistsAsync(email, ct);
-
-        if (emailExiste)
-        {
-            throw new ArgumentException("O email informado já está cadastrado.");
-        }
-
-        var usuario = UsuarioFactory.Criar(nome, email, senha, dataNascimento, telefone);
-
-        await _repo.AddAsync(usuario, ct);
-        await _repo.SaveChangesAsync(ct);
-
-        return usuario.ToReadDto();
     }
 }

@@ -15,5 +15,4 @@ public interface IUsuarioService
     Task<bool> RemoverAsync(int  id, CancellationToken  ct);
 
     Task<bool> EmailJaCadastradoAsync(string  email, CancellationToken  ct);
-    Task<object?> CriarAsync(string nome, string email, string senha, DateTime dataNascimento, string telefone, CancellationToken ct);
 }
