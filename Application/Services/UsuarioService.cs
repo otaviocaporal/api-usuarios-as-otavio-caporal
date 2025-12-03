@@ -73,6 +73,7 @@ public class UsuarioService : IUsuarioService
         {
             throw new KeyNotFoundException("O usuário informado não existe.");
         }
+        
         usuario.Nome = dto.Nome;
         usuario.Email = dto.Email;
         usuario.DataNascimento = dto.DataNascimento;

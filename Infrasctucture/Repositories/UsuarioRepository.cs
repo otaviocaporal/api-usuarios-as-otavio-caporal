@@ -25,8 +25,9 @@ namespace Infrastructure.Repositories
 
         public async Task<Usuario?> GetByIdAsync(int id, CancellationToken ct)
         {
-            return await _context.Usuarios.FirstOrDefaultAsync(u => u.Id == id && u.Ativo, ct);
+            return await _context.Usuarios.FirstOrDefaultAsync(u => u.Id == id, ct);
         }
+
 
         public async Task<Usuario?> GetByEmailAsync(string email, CancellationToken ct)
         {
